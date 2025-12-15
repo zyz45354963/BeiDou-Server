@@ -27,7 +27,11 @@ public class I18nUtil {
         String[] stringArgs = Arrays.stream(args)
                 .map(String::valueOf)
                 .toArray(String[]::new);
-        return messageSource.getMessage(code, stringArgs, clientLang);
+        try {
+            return messageSource.getMessage(code, args, clientLang);
+        } catch (Exception e) {
+            return "语言未找到对应语言:" + code;
+        }
     }
 
     public static String getMessage(Locale locale, String code, Object... args) {

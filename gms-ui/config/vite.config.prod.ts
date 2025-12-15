@@ -15,6 +15,7 @@ export default mergeConfig(
       configImageminPlugin(),
     ],
     build: {
+      outDir: '../gms-server/src/main/resources/static',
       rollupOptions: {
         output: {
           manualChunks: {

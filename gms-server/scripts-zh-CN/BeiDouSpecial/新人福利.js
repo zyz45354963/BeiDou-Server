@@ -21,7 +21,7 @@ function action(mode, type, selection)
 	    if (status == 0)
 	    {
 			//第一层对话
-			var strGetText = cm.getCharacterExtendValue("新人福利礼包");
+			var strGetText = cm.getCharacterExtendValue("新号福利");
 			if ( strGetText == "已领取" )
 			{
 				cm.sendOk("您已经领取了新手奖励了。每个角色#r限领一次。#k");
@@ -34,11 +34,18 @@ function action(mode, type, selection)
 	    }
 		else if (status == 1 )
 		{
-			//第二层对话
-		    cm.saveOrUpdateCharacterExtendValue("新人福利礼包", "已领取");
-		    cm.gainItem(2430033,10);
-		    cm.sendOk("恭喜您获得新手奖励，祝您游戏愉快！");
-		    cm.dispose();			
+            // 第二层对话
+            cm.saveOrUpdateCharacterExtendValue("新号福利", "已领取");
+//            cm.gainItem(4310000, 20); // 发放礼包物品绝对音感
+            cm.gainItem(2430033, 100);
+
+            // 增加 3000 血量上限
+//            var player = cm.getPlayer();
+//            var currentMaxHp = player.getMaxHp();
+//            player.updateMaxHp(currentMaxHp + 3000); // 增加 3000 点
+//            cm.sendOk("恭喜您获得新手奖励，并额外获得 #r3000 点血量上限#k！祝您游戏愉快！");
+
+            cm.dispose();
 		}
 		else
 		{
